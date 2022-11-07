@@ -13,8 +13,9 @@ services:
       - "32765-32769:32765-32769/udp"
     container_name: nfs-server
     environment:
-      - NFS_EXPORT_0='/nas_a                  *(rw,sync,no_root_squash,no_all_squash,no_subtree_check,nohide,crossmnt)'
-      - NFS_EXPORT_1='/nas_b 123.123.123.123/32(rw,sync,no_root_squash,no_all_squash,no_subtree_check,nohide,crossmnt)'
+      - NFS_EXPORT_0= /nas_a                  *(rw,sync,no_root_squash,no_all_squash,no_subtree_check,nohide,crossmnt)
+      - NFS_EXPORT_1= /nas_b 123.123.123.123/32(rw,sync,no_root_squash,no_all_squash,no_subtree_check,nohide,crossmnt)
     volumes:
-      - ./nas_a:/nas_a
-      - ./nas_b:/nas_b
+      - ./nas_a/:/nas_a/
+      - ./nas_b/:/nas_b/
+    privileged: true
